@@ -8,9 +8,6 @@ import nl.svenar.powercamera.events.OnJoin;
 import nl.svenar.powercamera.events.OnMove;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,7 +24,7 @@ public class PowerCamera extends JavaPlugin {
     public HashMap<UUID, CameraHandler> player_camera_handler = new HashMap<UUID, CameraHandler>(); // When the player is viewing the camera (/pc start & /pc preview)
     public Instant powercamera_start_time = Instant.now();
     private PluginDescriptionFile pdf;
-    private String plugin_chat_prefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "%plugin_name%" + ChatColor.BLACK + "] ";
+    private String plugin_chat_prefix =  ChatColor.AQUA + ChatColor.BOLD.toString() + "   %plugin_name% ";
     private PluginConfig config_plugin;
     private CameraStorage config_cameras;
 
@@ -94,11 +91,6 @@ public class PowerCamera extends JavaPlugin {
                 }
 
                 new_points.add(point);
-//				if (point.contains(":")) {
-//					new_points.add(point);
-//				} else {
-//					new_points.add("location:" + point);
-//				}
             }
             config_cameras.getConfig().set("cameras." + camera_name + ".points", new_points);
         }
